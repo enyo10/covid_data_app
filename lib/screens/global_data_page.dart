@@ -1,3 +1,5 @@
+import 'package:covid_data_app/api/api.dart';
+import 'package:covid_data_app/api/web_service.dart';
 import 'package:covid_data_app/components/bottomButton.dart';
 import 'package:covid_data_app/components/reusable_card.dart';
 import 'package:covid_data_app/screens/states_list.dart';
@@ -92,12 +94,15 @@ class GlobalDataPage extends StatelessWidget {
           BottomButton(
             buttonTitle: 'CALCULATE',
             onTap: () {
-              Navigator.push(
+              Webservice()
+                  .load(Api.fetchGlobalData())
+                  .then((value) => print(value));
+              /* Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => StatesList(),
                 ),
-              );
+              );*/
             },
           )
         ],

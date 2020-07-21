@@ -11,6 +11,11 @@ class ClosedCases {
         recovered: json['recovered'],
         deaths: json['deaths']);
   }
+
+  @override
+  String toString() {
+    return 'ClosedCases{total: $total, recovered: $recovered, deaths: $deaths}';
+  }
 }
 
 class ActiveCases {
@@ -26,6 +31,11 @@ class ActiveCases {
       critical: json['critical'],
       mild: json['mild'],
     );
+  }
+
+  @override
+  String toString() {
+    return 'ActiveCases{total: $total, critical: $critical, mild: $mild}';
   }
 }
 
@@ -45,4 +55,15 @@ class GlobalData {
       activeCases: json['activeCases'],
     );
   }
+
+  @override
+  String toString() {
+    return 'GlobalData{activeCases: $activeCases, closedCases: $closedCases, total: $total, timeStamp: $timeStamp}';
+  }
+
+/* @override
+  String toString() {
+    return 'GlobalData{total: $total, timeStamp: $timeStamp}';
+  }*/
+
 }

@@ -17,4 +17,5 @@ const kLargeButtonTextStyle = TextStyle(
 const kBottomContainerHeight = 80.0;
 const kBottomContainerColor = Color(0xFFEB1555);
 
-const globalDataUrl = 'https://covid19-update-api.herokuapp.com/api/v1/cases';
+const kGlobalCovidDataUrl =
+    'https://covid19-update-api.herokuapp.com/api/v1/cases';
