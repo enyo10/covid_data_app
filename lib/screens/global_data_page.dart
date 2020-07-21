@@ -1,9 +1,9 @@
 import 'package:covid_data_app/api/covid_data_provider.dart';
 import 'package:covid_data_app/components/bottomButton.dart';
 import 'package:covid_data_app/components/reusable_card.dart';
-import 'package:covid_data_app/models/cases.dart';
 import 'package:covid_data_app/screens/states_list.dart';
 import 'package:covid_data_app/utils/constants.dart';
+import 'package:covid_data_app/utils/helper.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -38,7 +38,12 @@ class GlobalDataPage extends StatelessWidget {
         else
           return Scaffold(
             appBar: AppBar(
-              title: Text('Covid 19 data'),
+              title: Text(
+                '${covidDataProvider.globalData.timeStamp}',
+                style: TextStyle(
+                  fontSize: 16,
+                ),
+              ),
             ),
             body: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -59,7 +64,8 @@ class GlobalDataPage extends StatelessWidget {
                           height: 40,
                         ),
                         Text(
-                          '${covidDataProvider.globalData.total}',
+                          '${covidDataProvider.globalData.total}'
+                              .replaceAllMapped(reg, mathFunc),
                           style: kNumberTextStyle,
                         )
                       ],
@@ -81,7 +87,8 @@ class GlobalDataPage extends StatelessWidget {
                           height: 40,
                         ),
                         Text(
-                          '${covidDataProvider.globalData.closedCases.deaths}',
+                          '${covidDataProvider.globalData.closedCases.deaths}'
+                              .replaceAllMapped(reg, mathFunc),
                           style: kNumberTextStyle.copyWith(
                             color: Color(0xFFFF0404),
                           ),
@@ -105,7 +112,8 @@ class GlobalDataPage extends StatelessWidget {
                         Padding(
                           padding: EdgeInsets.only(top: 30.0),
                           child: Text(
-                            '${covidDataProvider.globalData.closedCases.recovered}',
+                            '${covidDataProvider.globalData.closedCases.recovered}'
+                                .replaceAllMapped(reg, mathFunc),
                             style: kNumberTextStyle.copyWith(
                                 color: Color(0xFF1FF000)),
                           ),
@@ -115,7 +123,7 @@ class GlobalDataPage extends StatelessWidget {
                   ),
                 ),
                 BottomButton(
-                  buttonTitle: 'SHOW STATES DATA',
+                  buttonTitle: 'SHOW DATA BY STATE',
                   onTap: () {
                     Navigator.push(
                       context,
