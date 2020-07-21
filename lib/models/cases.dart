@@ -40,8 +40,8 @@ class ActiveCases {
 }
 
 class GlobalData {
-  final dynamic activeCases;
-  final dynamic closedCases;
+  final ActiveCases activeCases;
+  final ClosedCases closedCases;
   final int total;
   final String timeStamp;
 
@@ -51,8 +51,8 @@ class GlobalData {
     return GlobalData(
       total: json['total'],
       timeStamp: json['timeStamp'],
-      closedCases: json['closedCases'],
-      activeCases: json['activeCases'],
+      closedCases: ClosedCases.fromJson(json['closedCases']),
+      activeCases: ActiveCases.fromJson(json['activeCases']),
     );
   }
 
