@@ -1,3 +1,5 @@
+import 'package:covid_data_app/models/graph_data.dart';
+
 class ClosedCases {
   final int total;
   final int recovered;
@@ -44,8 +46,19 @@ class GlobalData {
   final ClosedCases closedCases;
   final int total;
   final String timeStamp;
+  final List<dynamic> data;
+  final List<dynamic> category;
+  final TotalCasesStatData totalCasesStatData;
 
-  GlobalData({this.activeCases, this.closedCases, this.total, this.timeStamp});
+  GlobalData({
+    this.totalCasesStatData,
+    this.category,
+    this.activeCases,
+    this.closedCases,
+    this.total,
+    this.timeStamp,
+    this.data,
+  });
 
   factory GlobalData.fromJson(Map<String, dynamic> json) {
     return GlobalData(
@@ -53,6 +66,10 @@ class GlobalData {
       timeStamp: json['timeStamp'],
       closedCases: ClosedCases.fromJson(json['closedCases']),
       activeCases: ActiveCases.fromJson(json['activeCases']),
+      data: json['graphs']['totalCases']['data'],
+      category: json['graphs']['totalCases']['categories'],
+      totalCasesStatData:
+          TotalCasesStatData.fromJson(json['graphs']['totalCases']),
     );
   }
 
@@ -60,10 +77,4 @@ class GlobalData {
   String toString() {
     return 'GlobalData{activeCases: $activeCases, closedCases: $closedCases, total: $total, timeStamp: $timeStamp}';
   }
-
-/* @override
-  String toString() {
-    return 'GlobalData{total: $total, timeStamp: $timeStamp}';
-  }*/
-
 }
